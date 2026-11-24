@@ -1,0 +1,63 @@
+:root {
+  font-family: Inter, 'Segoe UI', Tahoma, Arial, sans-serif;
+  --color-paper: #f7f6f2;
+  --color-surface: #ffffff;
+  --color-ink: #20211f;
+  --color-muted: #6b6d68;
+  --color-line: #dbdcd5;
+  --color-subtle: #efeee9;
+  --color-brand: #ff5b3d;
+  --color-brand-hover: #e9482c;
+  --color-cobalt: #535dd9;
+  --color-lilac: #d8d1fb;
+  --color-mint: #d9f3df;
+  --color-yellow: #f4ec9d;
+  --color-success: #21744f;
+  --color-danger: #ae4436;
+  --color-warning: #a47122;
+  --shadow-float: 0 18px 50px rgba(25, 26, 23, .075);
+  --radius-sm: 7px;
+  --radius-md: 11px;
+  --radius-lg: 17px;
+  --radius-xl: 24px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  color: var(--color-ink);
+  background: var(--color-paper);
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --color-paper: #151716;
+  --color-surface: #202320;
+  --color-ink: #f3f2eb;
+  --color-muted: #a5a8a0;
+  --color-line: #41443e;
+  --color-subtle: #2c302b;
+  --color-brand: #ff7960;
+  --color-brand-hover: #ff927d;
+  --color-cobalt: #9298ff;
+  --color-lilac: #3f3b5d;
+  --color-mint: #253f33;
+  --color-yellow: #514c27;
+  --color-success: #79d5a9;
+  --color-danger: #ff9788;
+  --color-warning: #ffd08a;
+  --shadow-float: 0 18px 50px rgba(0, 0, 0, .22);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; }
+::selection { color: #181918; background: #ffb7a8; }

@@ -1,0 +1,23 @@
+.cu-story-stage {
+  box-sizing: border-box;
+  min-width: min(620px, 80vw);
+  min-height: 190px;
+  padding: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  font-family: Inter, 'Segoe UI', Tahoma, sans-serif;
+  text-align: start;
+}
+.cu-story-stage > * { max-width: 100%; }
+.cu-story-surface { width: min(430px, 100%); display: grid; gap: 16px; }
+.cu-story-surface h3 { margin: 0 0 4px; }
+.cu-story-surface p { margin: 0; color: var(--color-muted); line-height: 1.55; }
+.cu-story-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.cu-story-stage .cu-card { padding: 24px; }
+.cu-story-stage [data-theme='dark'] { color: var(--color-ink); }
+@media (max-width: 680px) { .cu-story-stage { min-width: 0; width: 100%; padding: 24px; } }
