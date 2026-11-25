@@ -6,14 +6,14 @@ import type { TranslationKey } from '../data/i18n';
 interface FoundationsProps { t: (key: TranslationKey) => string; copy: (value: string, message?: string) => void }
 
 const colors = [
-  { name: 'Ink', light: '#20211F', dark: '#F3F2EB', group: '01', inverted: true },
-  { name: 'Paper', light: '#F7F6F2', dark: '#151716', group: '01', inverted: false },
-  { name: 'Coral', light: '#FF5B3D', dark: '#FF7960', group: '02', inverted: true },
-  { name: 'Cobalt', light: '#535DD9', dark: '#9298FF', group: '02', inverted: true },
-  { name: 'Mint', light: '#D9F3DF', dark: '#253F33', group: '03', inverted: false },
-  { name: 'Lilac', light: '#D8D1FB', dark: '#3F3B5D', group: '03', inverted: false },
-  { name: 'Butter', light: '#F4EC9D', dark: '#514C27', group: '03', inverted: false },
-  { name: 'Line', light: '#DBDCD5', dark: '#41443E', group: '01', inverted: false }
+  { name: 'Ink', light: '#17191E', dark: '#F4F3FB', group: '01', inverted: true },
+  { name: 'Paper', light: '#F6F5F3', dark: '#12141C', group: '01', inverted: false },
+  { name: 'Electric Iris', light: '#7857E8', dark: '#B49BFF', group: '02', inverted: true },
+  { name: 'Graphite', light: '#343647', dark: '#CECBE1', group: '02', inverted: true },
+  { name: 'Mint', light: '#DDF5E6', dark: '#223D35', group: '03', inverted: false },
+  { name: 'Lilac', light: '#E9E3FD', dark: '#373049', group: '03', inverted: false },
+  { name: 'Butter', light: '#EDFFAB', dark: '#46492A', group: '03', inverted: false },
+  { name: 'Line', light: '#E0E1E5', dark: '#41424F', group: '01', inverted: false }
 ];
 
 const spacings = [{px:4,token:1},{px:8,token:2},{px:12,token:3},{px:16,token:4},{px:20,token:5},{px:24,token:6},{px:32,token:8},{px:40,token:10},{px:48,token:12},{px:64,token:16}];

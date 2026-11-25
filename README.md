@@ -1,8 +1,8 @@
 # CoreUI
 
-An independent, editorial-style React design system studio with reusable TypeScript components, themeable tokens, interactive documentation, Storybook stories, and unit tests.
+An independent React design system studio with expressive visual design, 17 reusable TypeScript components, interactive documentation, a six-component live customization lab, full Storybook stories, and unit tests.
 
-This is an independent portfolio project, not affiliated with the similarly named commercial CoreUI product.
+This is an independent portfolio project, not affiliated with the similarly named commercial CoreUI product. The refreshed visual experience is called the Studio Edition; the package version remains 2.0.0 to preserve compatibility with existing npm lockfiles.
 
 ## Tech stack
 
@@ -63,11 +63,20 @@ export function Example() {
 
 The UI primitives do not require a server. Locale and theme in the documentation website persist to local storage. Playground interactions, onboarding, and notifications are intentionally local demos.
 
+## Studio Edition
+
+The site offers a clear route: start on the editorial home page, discover a component in the searchable catalog, customize it in the live laboratory, then continue to the full Storybook Controls and Docs. The in-site lab covers Button, Badge, TextField, Switch, Alert and Progress; Storybook provides dedicated interactive stories for all 17 component families.
+
+The UI supports light/dark themes, English/Persian RTL/LTR, a keyboard-first command search (`Ctrl+K` or `⌘K`), reduced-motion preferences and responsive layouts. Theme and language settings persist locally.
+
+The hero preview and the component lab are browser-side demonstrations. They do not create a backend workspace or persist form submissions.
+
 ## Project map
 
 | Location | Purpose |
 | --- | --- |
 | `src/components/ui` | Reusable component implementations |
+| `src/styles/edition.css` | Studio Edition layout and visual language |
 | `src/pages` | Documentation and playground screens |
 | `src/data/tokens.ts` | Typed CSS token references |
 | `src/data/i18n.ts` | Complete English and Persian UI strings |
@@ -101,9 +110,9 @@ The documentation is responsive, bilingual (English and Persian with RTL/LTR), a
 
 This is a frontend design system and demonstration site. It does not include authentication, backend storage, published npm packages, or a guarantee of production accessibility compliance. The reusable components are intended to be reviewed and extended before use in production.
 
-## CoreUI 2.0 — Getting started
+## CoreUI Studio Edition — Getting started
 
-The landing page is organized around three decisions: **Find a component**, **Try and customize**, and **Implement with confidence**. The component directory now shows a searchable list, one focused live preview, and a copyable usage example. Global search with `Ctrl + K` searches both pages and individual components.
+The Studio Edition landing page, live specimen and searchable catalog are organized around three decisions: **Find a component**, **Try and customize**, and **Implement with confidence**. The component directory now shows a searchable list, one focused live preview, and a copyable usage example. Global search with `Ctrl + K` searches both pages and individual components.
 
 ### Storybook: full component controls
 

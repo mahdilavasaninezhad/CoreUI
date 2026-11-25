@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
-import { ArrowRight, Check, Copy, Download, HelpCircle, Mail, Plus, Search } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Check, Copy, Download, ExternalLink, Grid3X3, HelpCircle, Mail, Moon, Plus, Search, Sun } from 'lucide-react';
 import {
   Accordion, Alert, Avatar, Badge, Button, Card, Checkbox, Dialog, Progress, Select, Skeleton, Switch, Tabs, Tag, TextField, Tooltip
 } from '../components/ui';
@@ -23,6 +23,7 @@ export function ComponentsPage({ t, copy }: ComponentsPageProps) {
   const [category, setCategory] = useState<Category>('all');
   const [selectedId, setSelectedId] = useState('01');
   const [search, setSearch] = useState('');
+  const [previewMode, setPreviewMode] = useState<'light' | 'dark' | 'grid'>('light');
   const [checked, setChecked] = useState(true);
   const [enabled, setEnabled] = useState(true);
   const [tab, setTab] = useState('overview');
@@ -77,6 +78,10 @@ export function ComponentsPage({ t, copy }: ComponentsPageProps) {
   const categories: Category[] = ['all', 'actions', 'inputs', 'display', 'feedback'];
   const active = filtered.find((item) => item.id === selectedId) || filtered[0];
   const helper = t('componentDescription');
+  const storyNames: Record<string, string> = { buttons: 'button', badges: 'badge', textFields: 'textfield', checkbox: 'checkbox', switchControl: 'switch', tabs: 'tabs', dialogs: 'dialog', alerts: 'alert', progress: 'progress', avatars: 'avatar', accordions: 'accordion', tags: 'tag', skeletons: 'skeleton', tooltips: 'tooltip', select: 'select', cards: 'card', toasts: 'toast' };
+  const storyGroups: Record<Exclude<Category, 'all'>, string> = { actions: '01-actions', inputs: '02-forms', display: '03-display', feedback: '04-feedback' };
+  const storybookBase = import.meta.env.DEV ? 'http://localhost:6006' : `${import.meta.env.BASE_URL}storybook/`;
+  const storybookLink = active ? `${storybookBase}?path=/story/${storyGroups[active.group]}-${storyNames[active.name]}--playground` : storybookBase;
   return <div className="content-page ux-catalog">
     <SectionHeading eyebrow="02 / COMPONENT INDEX" title={t('componentTitle')} description={helper} />
     <div className="ux-catalog-instructions">
@@ -90,14 +95,14 @@ export function ComponentsPage({ t, copy }: ComponentsPageProps) {
     <div className="ux-catalog-layout">
       <aside className="ux-component-directory" aria-label={t('components')}>
         <div className="ux-directory-title"><span>{t('components')}</span><span>{filtered.length} / 17</span></div>
-        {filtered.length ? filtered.map((item) => <button key={item.id} className={`ux-directory-item ${active?.id === item.id ? 'is-active' : ''}`} aria-current={active?.id === item.id ? 'true' : undefined} onClick={() => setSelectedId(item.id)}><span>{t(item.name)}</span><small>{t(item.group)}</small><ArrowRight size={16} /></button>) : <div className="ux-directory-empty">{t('emptyText')}</div>}
+        {filtered.length ? filtered.map((item) => <button key={item.id} className={`ux-directory-item ${active?.id === item.id ? 'is-active' : ''}`} aria-current={active?.id === item.id ? 'true' : undefined} onClick={() => { setSelectedId(item.id); window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#components/${item.name}`); }}><span>{t(item.name)}</span><small>{t(item.group)}</small><ArrowRight size={16} /></button>) : <div className="ux-directory-empty">{t('emptyText')}</div>}
       </aside>
       <section className="ux-component-stage" aria-live="polite">
         {active ? <>
-          <header className="ux-stage-header"><div><span className="mini-eyebrow">ELEMENT / {active.id} — {t(active.group)}</span><h2>{t(active.name)}</h2></div><Badge tone="success" dot>LIVE</Badge></header>
-          <div className="ux-stage-preview"><span className="ux-stage-kicker">{t('livePreview')}</span><div className="ux-stage-demo" key={active.id}>{active.view()}</div></div>
+          <header className="ux-stage-header"><div><span className="mini-eyebrow">ELEMENT / {active.id} — {t(active.group)}</span><h2>{t(active.name)}</h2></div><div className="v3-catalog-actions"><Badge tone="success" dot>LIVE</Badge><a href={storybookLink} target="_blank" rel="noopener noreferrer">Storybook <ArrowUpRight size={16}/></a></div></header>
+          <div className="ux-stage-preview"><div className="v3-preview-toolbar"><span className="ux-stage-kicker">{t('livePreview')}</span><div className="v3-preview-modes" aria-label="Preview appearance"><button className={previewMode === 'light' ? 'is-active' : ''} onClick={() => setPreviewMode('light')} aria-label="Light preview" aria-pressed={previewMode === 'light'} title="Light"><Sun size={15}/></button><button className={previewMode === 'dark' ? 'is-active' : ''} onClick={() => setPreviewMode('dark')} aria-label="Dark preview" aria-pressed={previewMode === 'dark'} title="Dark"><Moon size={15}/></button><button className={previewMode === 'grid' ? 'is-active' : ''} onClick={() => setPreviewMode('grid')} aria-label="Grid preview" aria-pressed={previewMode === 'grid'} title="Grid"><Grid3X3 size={15}/></button></div></div><div className={`ux-stage-demo v3-preview-canvas ${previewMode === 'grid' ? 'is-grid' : ''}`} data-theme={previewMode === 'dark' ? 'dark' : 'light'} key={active.id}>{active.view()}</div></div>
           <div className="ux-stage-code"><div className="ux-code-heading"><span>REACT / JSX</span><button onClick={() => copy(active.snippet, t('copiedCode'))}><Copy size={16}/>{t('copy')}</button></div><pre><code>{active.snippet}</code></pre></div>
-          <div className="ux-stage-bottom"><Check size={16}/><span>{t('demoNote')}</span></div>
+          <div className="ux-stage-bottom"><Check size={16}/><span>{t('demoNote')}</span><a href={storybookLink} target="_blank" rel="noopener noreferrer">All properties in Storybook <ExternalLink size={14}/></a></div>
         </> : <div className="component-empty">{t('emptyText')}</div>}
       </section>
     </div>

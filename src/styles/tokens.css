@@ -1,17 +1,18 @@
 :root {
-  font-family: Inter, 'Segoe UI', Tahoma, Arial, sans-serif;
-  --color-paper: #f7f6f2;
+  font-family: 'Inter', 'Vazirmatn', 'Segoe UI', Tahoma, Arial, sans-serif;
+  --color-paper: #f6f5f3;
   --color-surface: #ffffff;
-  --color-ink: #20211f;
-  --color-muted: #6b6d68;
-  --color-line: #dbdcd5;
-  --color-subtle: #efeee9;
-  --color-brand: #ff5b3d;
-  --color-brand-hover: #e9482c;
-  --color-cobalt: #535dd9;
-  --color-lilac: #d8d1fb;
-  --color-mint: #d9f3df;
-  --color-yellow: #f4ec9d;
+  --color-ink: #17191e;
+  --color-muted: #737581;
+  --color-line: #e0e1e5;
+  --color-subtle: #eeedf0;
+  --color-brand: #7857e8;
+  --color-brand-hover: #6645db;
+  --color-graphite: #343647;
+  --color-cobalt: #7857e8;
+  --color-lilac: #e9e3fd;
+  --color-mint: #ddf5e6;
+  --color-yellow: #edffab;
   --color-success: #21744f;
   --color-danger: #ae4436;
   --color-warning: #a47122;
@@ -36,18 +37,19 @@
 
 [data-theme='dark'] {
   color-scheme: dark;
-  --color-paper: #151716;
-  --color-surface: #202320;
-  --color-ink: #f3f2eb;
-  --color-muted: #a5a8a0;
-  --color-line: #41443e;
-  --color-subtle: #2c302b;
-  --color-brand: #ff7960;
-  --color-brand-hover: #ff927d;
-  --color-cobalt: #9298ff;
-  --color-lilac: #3f3b5d;
-  --color-mint: #253f33;
-  --color-yellow: #514c27;
+  --color-paper: #12141c;
+  --color-surface: #20222d;
+  --color-ink: #f4f3fb;
+  --color-muted: #acafbd;
+  --color-line: #41424f;
+  --color-subtle: #2b2d39;
+  --color-brand: #b49bff;
+  --color-brand-hover: #c2b1ff;
+  --color-graphite: #cecbe1;
+  --color-cobalt: #b49bff;
+  --color-lilac: #373049;
+  --color-mint: #223d35;
+  --color-yellow: #46492a;
   --color-success: #79d5a9;
   --color-danger: #ff9788;
   --color-warning: #ffd08a;
@@ -57,7 +59,8 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; min-width: 320px; }
+:focus-visible { outline: 2px solid var(--color-cobalt); outline-offset: 3px; }
 button, input, select, textarea { font: inherit; }
-button { cursor: pointer; }
+button { cursor: pointer; border: 0; background: transparent; color: inherit; }
 a { color: inherit; }
 ::selection { color: #181918; background: #ffb7a8; }

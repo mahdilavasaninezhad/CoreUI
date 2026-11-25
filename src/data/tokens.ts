@@ -5,6 +5,7 @@ export const tokens = {
     surface: 'var(--color-surface)',
     brand: 'var(--color-brand)',
     cobalt: 'var(--color-cobalt)',
+    graphite: 'var(--color-graphite)',
     muted: 'var(--color-muted)',
     success: 'var(--color-success)',
     danger: 'var(--color-danger)'

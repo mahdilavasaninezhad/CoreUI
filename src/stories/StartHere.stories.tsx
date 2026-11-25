@@ -1,18 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ArrowRight, BookOpen, MousePointerClick, Settings2 } from 'lucide-react';
+import { ArrowRight, Asterisk, BookOpen, Code2, Component, MousePointerClick, Palette, SlidersHorizontal, Sparkles } from 'lucide-react';
 
 function Guide() {
-  return <div className="cu-story-surface" style={{ minWidth: 380, maxWidth: 600, gap: 20 }}>
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 15 }}><span style={{ fontSize: 11, fontWeight: 800, letterSpacing: '.08em' }}>COREUI / COMPONENT STUDIO</span><BookOpen size={20} /></div>
-    <h2 style={{ fontSize: 36, lineHeight: 1.1, letterSpacing: '-.06em', margin: 0 }}>Find it. Try it. Use it.</h2>
-    <p>Choose a component from the sidebar. Open its Playground story, change the props in Controls, then view Docs to see the usage and API.</p>
-    <div className="cu-story-surface" style={{ gap: 14 }}>
-      <div className="cu-story-row"><BookOpen size={17} /><strong>01 · Pick a component / انتخاب کامپوننت</strong></div>
-      <div className="cu-story-row"><MousePointerClick size={17} /><strong>02 · Change its Controls / تغییر ویژگی‌ها</strong></div>
-      <div className="cu-story-row"><Settings2 size={17} /><strong>03 · Explore states and Docs / بررسی حالت‌ها و مستندات</strong></div>
-    </div>
-    <p style={{ fontSize: 12 }}>The toolbar also switches Light/Dark and English/فارسی direction. Controlled input values update as you type or click.</p>
-    <div className="cu-story-row"><span style={{ fontSize: 12, fontWeight: 700 }}>START WITH ACTIONS / BUTTON</span><ArrowRight size={17} /></div>
+  const steps = [
+    { number: '01', title: 'Find your component', fa: 'کامپوننت را پیدا کن', description: 'Pick any component from the sidebar. Every component includes live examples and documentation.', icon: Component, href: '?path=/story/01-actions-button--playground' },
+    { number: '02', title: 'Make it yours', fa: 'ویژگی‌ها را تغییر بده', description: 'Open Playground and use Controls. Change size, variants, states, content and accessibility props.', icon: SlidersHorizontal, href: '?path=/story/02-forms-textfield--playground' },
+    { number: '03', title: 'Build with confidence', fa: 'با اطمینان استفاده کن', description: 'Review the Docs and copy the JSX into your own React application.', icon: Code2, href: '?path=/docs/01-actions-button--docs' }
+  ];
+  return <div className="cu-welcome">
+    <div className="cu-welcome-hero"><div className="cu-welcome-top"><span className="cu-welcome-identity"><Asterisk size={23}/>COREUI STUDIO</span><span>REACT + TYPESCRIPT / V3.0</span></div><div className="cu-welcome-copy"><span className="cu-welcome-kicker"><Sparkles size={15}/> AN INTERACTIVE DESIGN SYSTEM</span><h1>Make every<br/><em>pixel</em> matter.</h1><p>Explore the system, experiment with actual component props and learn what makes a useful interface feel extraordinary.</p><span className="cu-welcome-fa">کامپوننت‌ها را پیدا کن، تغییر بده و در پروژه خودت استفاده کن.</span></div><div className="cu-welcome-orb"><Asterisk size={95} strokeWidth={1.1}/></div></div>
+    <div className="cu-welcome-content"><div className="cu-welcome-intro"><span>THE SIMPLE WORKFLOW / 001</span><h2>Find it. Try it. Build it.</h2><p>Three steps from discovery to production-ready JSX.</p></div><div className="cu-welcome-steps">{steps.map(({ number, title, fa, description, icon: Icon, href }) => <a key={number} href={href} className="cu-welcome-step"><span className="cu-welcome-step-head">{number}<ArrowRight size={17}/></span><span className="cu-welcome-step-icon"><Icon size={25}/></span><strong>{title}</strong><small>{fa}</small><p>{description}</p></a>)}</div><div className="cu-welcome-foot"><span><Palette size={16}/> LIGHT / DARK · RTL / LTR</span><span><BookOpen size={16}/> 17 COMPONENT FAMILIES</span><a href="?path=/story/01-actions-button--playground">OPEN THE LAB <MousePointerClick size={17}/></a></div></div>
   </div>;
 }
 
@@ -20,7 +17,7 @@ const meta = {
   title: '00 Start here/Welcome',
   component: Guide,
   tags: ['autodocs'],
-  parameters: { controls: { disable: true }, layout: 'centered' }
+  parameters: { controls: { disable: true }, layout: 'fullscreen', docs: { description: { component: 'CoreUI Studio is an independent, bilingual design system demonstration with interactive component documentation.' } } }
 } satisfies Meta<typeof Guide>;
 
 export default meta;
